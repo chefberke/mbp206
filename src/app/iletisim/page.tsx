@@ -1,19 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
-function page() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface Status {
+  type: "pending" | "success" | "error" | "";
+  message: string;
+}
+
+function ContactPage() {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState({
+  const [status, setStatus] = useState<Status>({
     type: "",
     message: "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -21,7 +34,7 @@ function page() {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ type: "pending", message: "Mesajınız gönderiliyor..." });
 
@@ -45,10 +58,13 @@ function page() {
         message: "Mesajınız başarıyla gönderildi!",
       });
       setFormData({ name: "", email: "", message: "" });
-    } catch (error: any) {
+    } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Bir hata oluştu. Lütfen tekrar deneyin.",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Bir hata oluştu. Lütfen tekrar deneyin.",
       });
     }
   };
@@ -138,4 +154,4 @@ function page() {
   );
 }
 
-export default page;
+export default ContactPage;

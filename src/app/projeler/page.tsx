@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 import japan from "@/assets/japonishi.jpeg";
 import redkeys from "@/assets/redkeys.jpg";
@@ -38,7 +39,7 @@ function Projeler() {
             <div className="flex flex-col space-y-4">
               <div className="w-full h-48 bg-neutral-700 rounded-xl overflow-hidden">
                 {proje.image && (
-                  <img
+                  <Image
                     src={
                       typeof proje.image === "string"
                         ? proje.image
@@ -46,6 +47,8 @@ function Projeler() {
                     }
                     alt={proje.name}
                     className="w-full h-full object-cover"
+                    width={800}
+                    height={400}
                   />
                 )}
               </div>

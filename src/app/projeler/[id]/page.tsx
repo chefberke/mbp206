@@ -1,16 +1,20 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import japan from "@/assets/japonishi.jpeg";
 import redkeys from "@/assets/redkeys.jpg";
 
-type Props = {
-  params: {
+interface PageProps {
+  params: Promise<{
     id: string;
-  };
-};
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
-function ProjeDetay({ params }: Props) {
+export default async function ProjeDetay({ params }: PageProps) {
+  const resolvedParams = await params;
+
   const projeler = [
     {
       id: 1,
@@ -34,7 +38,7 @@ function ProjeDetay({ params }: Props) {
     },
   ];
 
-  const proje = projeler.find((p) => p.id === parseInt(params.id));
+  const proje = projeler.find((p) => p.id === parseInt(resolvedParams.id));
 
   if (!proje) {
     return (
@@ -87,12 +91,14 @@ function ProjeDetay({ params }: Props) {
       <section className="mb-8">
         <div className="w-full h-64 md:h-96 bg-neutral-700 rounded-xl overflow-hidden mb-6">
           {proje.image && (
-            <img
+            <Image
               src={
                 typeof proje.image === "string" ? proje.image : proje.image.src
               }
               alt={proje.name}
               className="w-full h-full object-cover"
+              width={1200}
+              height={800}
             />
           )}
         </div>
@@ -110,7 +116,7 @@ function ProjeDetay({ params }: Props) {
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-neutral-700 hover:bg-neutral-600 text-neutral-100 px-4 py-2 rounded-lg transition-colors duration-300"
           >
-            <span>Github'da İncele</span>
+            <span>Github&apos;da İncele</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -131,5 +137,3 @@ function ProjeDetay({ params }: Props) {
     </article>
   );
 }
-
-export default ProjeDetay;
