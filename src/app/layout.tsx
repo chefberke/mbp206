@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${poppins.className} bg-neutral-950 text-neutral-300 flex items-center justify-center w-full min-h-screen p-2 md:p-4`}
+        className={`${poppins.className} bg-black text-white flex items-center justify-center w-full min-h-screen p-2 md:p-4`}
       >
         <main className="flex-col items-center justify-center w-full h-full max-w-2xl mx-auto py-16 md:py-20">
           <Nav />
