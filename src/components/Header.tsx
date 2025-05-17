@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import HeaderImage from "@/assets/melih.jpg";
+import HeaderImage from "@/assets/melih3.jpeg";
 import About from "@/components/About";
 function Header() {
   return (
@@ -17,7 +17,7 @@ function Header() {
           />
         </figure>
         <header className="pt-8 md:pt-12">
-          <h1 className="text-neutral-50 font-medium text-4xl md:text-5xl tracking-wider">
+          <h1 className="text-neutral-50 text-center font-medium text-4xl md:text-5xl tracking-wider">
             Merhaba, Ben Melih!
           </h1>
         </header>

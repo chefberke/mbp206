@@ -39,7 +39,7 @@ export default function Galeri() {
                   index % 2 === 0 ? "md:translate-y-12" : ""
                 }`}
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl h-[600px]">
+                <div className="relative overflow-hidden rounded-lg shadow-2xl aspect-square w-full max-w-[500px] mx-auto">
                   <div className="w-full h-full relative">
                     <img
                       src={image.src}
@@ -47,7 +47,7 @@ export default function Galeri() {
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
-                  <div className="absolute inset-0 border border-white/10 rounded-2xl" />
+                  <div className="absolute inset-0 border border-white/10 rounded-md" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                 </div>
