@@ -36,6 +36,14 @@ function Nav() {
           </li>
           <li>
             <Link
+              href="/yetenekler"
+              className="text-white hover:text-gray-300 transition-colors duration-300"
+            >
+              YETENEKLER
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/projeler"
               className="text-white hover:text-gray-300 transition-colors duration-300"
             >
